@@ -6,15 +6,27 @@
 package model.domain;
 
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author leona
  */
+@Entity
+@Table(name="TB_CLIENTE")
 public class Cliente {
     
-   private Integer codigo;
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Column(name="CD_CLIENTE")
+   private Integer codigo;  
    
+   @Column(name="NM_CLIENTE", length = 255,nullable = false)
    private String nome;
     
    public Cliente() {

@@ -7,6 +7,7 @@ package view;
 
 import control.ClienteControl;
 import javax.swing.JOptionPane;
+import util.ValidacaoException;
 
 /**
  *
@@ -194,11 +195,18 @@ public class ClienteView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        try {
         clienteControl.salvar();
         JOptionPane.showMessageDialog(this,
                 "Cliente salvo com sucesso",
                 "Salvar cliente",
                 JOptionPane.INFORMATION_MESSAGE);
+        } catch(ValidacaoException e) {
+        JOptionPane.showMessageDialog(this,
+                e.getMessage(),
+                "Falha de Validação",
+                JOptionPane.WARNING_MESSAGE);   
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed

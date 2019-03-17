@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import util.ValidacaoException;
 
 /**
  *
@@ -72,6 +73,11 @@ public class Cliente {
             return false;
         }
         return true;
+    }
+    
+    public void validar() throws ValidacaoException {
+       if (this.nome == null || this.nome.equals(""))
+           throw new ValidacaoException("Campo nome não preenchido");
     }
    
 }
